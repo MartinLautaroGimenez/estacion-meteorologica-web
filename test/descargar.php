@@ -3,8 +3,13 @@ session_start();
 
 // Verifica si el usuario está autenticado
 if (!isset($_SESSION['loggedin'])) {
-    header('HTTP/1.1 401 Unauthorized');
+    header('HTTP/1.1 404 Unauthorized');
     exit;
+}
+if ($_SESSION['name'] != 'martin') {
+    // Configura el código de estado HTTP 403
+    header("HTTP/1.1 404 Unauthorized'");
+    exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 
 // Ruta al archivo

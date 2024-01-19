@@ -1,9 +1,13 @@
 <?php
-if ($_SESSION['name'] == '1234'){
-    header("Location: logout.php");
+session_start();
+
+// Resto de tu código...
+
+if ($_SESSION['name'] == 'pepito'){
+    header("Location: index.php");
 
 }
 if ($_SESSION['name'] == 'martin'){
     header("Location: /test/inicio.php");
-
+    
 }

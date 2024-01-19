@@ -3,9 +3,10 @@ session_start();
 include('obtencion_datos.php');
 
 // Verifica si el usuario está autenticado
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: ../index.php');
-    exit;
+if ($_SESSION['name'] != 'martin') {
+  // Configura el código de estado HTTP 403
+  header("HTTP/1.1 404 Unauthorized'");
+  exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 
 ?>
@@ -39,25 +40,25 @@ if (!isset($_SESSION['loggedin'])) {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="analiticas.php">
             <i class='bx bxs-pie-chart-alt-2' ></i>
             <span class="links_name">Analíticas</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="mi-cuenta.php">
             <i class='bx bxs-user-circle' ></i>
             <span class="links_name">Mi cuenta</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="feedback.php">
             <i class='bx bxs-happy' ></i>
             <span class="links_name">Feedback</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="solicitudes.php">
             <i class='bx bxs-check-circle' ></i>
             <span class="links_name">Solicitudes</span>
           </a>
@@ -73,7 +74,7 @@ if (!isset($_SESSION['loggedin'])) {
   </div>
   <section class="home-section">
     <nav>
-      <div class="sidebar-button">
+    <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Datos</span>
       </div>
@@ -132,15 +133,17 @@ if (!isset($_SESSION['loggedin'])) {
   </section>
 
 <script>
-   let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
-sidebarBtn.onclick = function() {
-  sidebar.classList.toggle("active");
-  if(sidebar.classList.contains("active")){
-  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-}else
-  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-}
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function() {
+    sidebar.classList.toggle("active");
+    if(sidebar.classList.contains("active")){
+    sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+    }else
+    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+
+    
 </script>
 
 </body>

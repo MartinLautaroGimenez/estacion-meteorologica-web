@@ -32,8 +32,9 @@
                     $mensaje = $_GET['msg'];
                     if ($mensaje === 'missing_data') {
                         echo '<div class="error-message">Faltan datos. Por favor, complete todos los campos.</div>';
-                    } elseif ($mensaje === 'incorrect_credentials') {
-                        echo '<div class="error-message">Credenciales incorrectas. Por favor, inténtelo de nuevo.</div>';
+                    } 
+                    if ($mensaje === 'incorrect_credentials') {
+                        echo '<div class="error-message">Credenciales incorrectas. Si no recuerda su contraseña comuniquese con su provedor.</div>';
                     }
                     if ($mensaje === 'logout_success') {
                         echo '<div class="sucess-message">Ha cerrado sesión correctamente</div>';

@@ -194,9 +194,11 @@ body {
         transform: scaleX(1);
     }
 }
-.error-message{
-    color:red;
+.error-message {
+    color: red;
+    text-align: center;
 }
 .sucess-message{
     color:green;
+    text-align: center;
 }

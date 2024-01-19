@@ -5,8 +5,10 @@ $DATABASE_HOST = '34.27.15.81';
 $DATABASE_USER = 'authentication_system';
 $DATABASE_PASS = 't0ZpZwXx5ICJzL7';
 $DATABASE_NAME = 'Usuarios';
+
 // Conexión a la base de datos
 $conexion = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+
 // Verifica si hay un error en la conexión
 if (mysqli_connect_error()) {
     exit('Fallo en la conexión de MySQL:' . mysqli_connect_error());
@@ -20,7 +22,7 @@ if (!isset($_POST['username'], $_POST['password'])) {
 }
 
 // Evitar inyección SQL
-if ($stmt = $conexion->prepare('SELECT Usuario, Contraseña FROM Clientes WHERE Usuario = ?')) {
+if ($stmt = $conexion->prepare('SELECT Usuario, Contraseña, Correo, Empresa, Grafico_Favorito FROM Clientes WHERE Usuario = ?')) {
     // Parámetros de enlace de la cadena s
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
@@ -29,7 +31,7 @@ if ($stmt = $conexion->prepare('SELECT Usuario, Contraseña FROM Clientes WHERE 
 // Se valida si lo ingresado coincide con la base de datos
 $stmt->store_result();
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($id, $password);
+    $stmt->bind_result($id, $password, $correo, $empresa, $grafico_favorito);
     $stmt->fetch();
 
     // Se confirma que la cuenta existe, ahora validamos la contraseña
@@ -39,14 +41,22 @@ if ($stmt->num_rows > 0) {
         $_SESSION['loggedin'] = true;
         $_SESSION['name'] = $_POST['username'];
         $_SESSION['id'] = $id;
-        header('Location: test/inicio.php');
+        $_SESSION['correo'] = $correo; // Agregar el correo a la sesión
+        $_SESSION['empresa'] = $empresa; // Agregar la empresa a la sesión
+        $_SESSION['graficofav'] = $grafico_favorito; // Agregar la empresa a la sesión
+
+        // Redirigir después de establecer la sesión
+        header('Location: verifyuser.php');
+        exit; // Añadir exit para detener la ejecución del código
     } else {
         // Contraseña incorrecta
-        header('Location: index.php?error=incorrect_credentials');
+        header('Location: index.php?msg=incorrect_credentials');
+        exit; // Añadir exit para detener la ejecución del código
     }
 } else {
     // Usuario incorrecto
-    header('Location: index.php?error=incorrect_credentials');
+    header('Location: index.php?msg=incorrect_credentials');
+    exit; // Añadir exit para detener la ejecución del código
 }
 
 $stmt->close();

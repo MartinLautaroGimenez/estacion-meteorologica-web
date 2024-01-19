@@ -447,3 +447,11 @@ text.highcharts-credits {
   visibility: hidden;
   display: none;
 }
+body {
+  overflow-x: auto;
+}
+
+/* Para navegadores webkit como Chrome y Safari */
+body::-webkit-scrollbar {
+  display: none;
+}
