@@ -83,14 +83,21 @@ function generarGraficoTemperaturassemanales() {
         );
         $i++;
     }
-    
+
     // Convertir datos a formato JSON
     $data_json = json_encode($data);
+
+    // Encontrar la temperatura mínima y máxima
+    $temperatura_minima = min(array_column($temperaturas_por_dia, 'temperatura'));
+    $temperatura_maxima = max(array_column($temperaturas_por_dia, 'temperatura'));
+    
+    // Texto indicando las temperaturas mínimas y máximas con formato centrado y salto de línea
+    $min_max_texto = "Temperatura mínima: $temperatura_minima <br> Temperatura máxima: $temperatura_maxima";
 
     // Cerrar la conexión
     $conn->close();
 
-    // Retornar solo el código del gráfico Highcharts sin HTML adicional
+    // Retornar el código completo del gráfico Highcharts con el texto adicional centrado
     return <<<HTML
     <head>
         <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -99,7 +106,7 @@ function generarGraficoTemperaturassemanales() {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Parsear los datos JSON
-            var data = $data_json;
+            var data = $data_json; // Asegurémonos de que $data_json esté impreso correctamente
 
             // Inicializar el gráfico de barras
             Highcharts.chart('grafico_barras', {
@@ -107,7 +114,7 @@ function generarGraficoTemperaturassemanales() {
                     type: 'column'
                 },
                 title: {
-                    text: 'Temperatura media de la semana'
+                    text: 'Temperatura Media Por Dia De La Semana'
                 },
                 xAxis: {
                     categories: data.map(function(item) {
@@ -128,6 +135,8 @@ function generarGraficoTemperaturassemanales() {
                 }]
             });
         });
+        // Añadir texto de temperaturas mínimas y máximas centrado con salto de línea
+        document.getElementById('grafico_barras').insertAdjacentHTML('afterend', '<p style="text-align: center;">' + '$min_max_texto' + '</p>');
     </script>
 HTML;
 }
@@ -215,6 +224,13 @@ function generarGraficoPresionAtmosfericaSemanal() {
     // Convertir datos a formato JSON
     $data_json = json_encode($data);
 
+    // Encontrar la presión mínima y máxima
+    $presion_minima = min(array_column($presion_por_dia, 'presion'));
+    $presion_maxima = max(array_column($presion_por_dia, 'presion'));
+    
+    // Texto indicando las presiones mínimas y máximas con formato centrado y salto de línea
+    $min_max_texto = "Presión mínima: $presion_minima <br> Presión máxima: $presion_maxima";
+
     // Cerrar la conexión
     $conn->close();
 
@@ -235,7 +251,7 @@ function generarGraficoPresionAtmosfericaSemanal() {
                     type: 'column'
                 },
                 title: {
-                    text: 'Presión Atmosférica Media de la Semana'
+                    text: 'Presión Atmosférica Media Por Dia De La Semana'
                 },
                 xAxis: {
                     categories: data.map(function(item) {
@@ -255,6 +271,8 @@ function generarGraficoPresionAtmosfericaSemanal() {
                     data: data
                 }]
             });
+            // Añadir texto de presiones mínimas y máximas centrado con salto de línea
+            document.getElementById('grafico_barras_presion').insertAdjacentHTML('afterend', '<p style="text-align: center;">' + '$min_max_texto' + '</p>');
         });
     </script>
 HTML;
@@ -343,6 +361,13 @@ function generarGraficoAltitudSemanal() {
     // Convertir datos a formato JSON
     $data_json = json_encode($data);
 
+    // Encontrar la altitud mínima y máxima
+    $altitud_minima = min(array_column($altitud_por_dia, 'altitud'));
+    $altitud_maxima = max(array_column($altitud_por_dia, 'altitud'));
+    
+    // Texto indicando las altitudes mínimas y máximas con formato centrado y salto de línea
+    $min_max_texto = "Altitud mínima: $altitud_minima <br> Altitud máxima: $altitud_maxima";
+
     // Cerrar la conexión
     $conn->close();
 
@@ -363,7 +388,7 @@ function generarGraficoAltitudSemanal() {
                     type: 'column'
                 },
                 title: {
-                    text: 'Altitud Media de la Semana'
+                    text: 'Altitud Media Por Dia De La Semana'
                 },
                 xAxis: {
                     categories: data.map(function(item) {
@@ -383,11 +408,14 @@ function generarGraficoAltitudSemanal() {
                     data: data
                 }]
             });
+            // Añadir texto de altitudes mínimas y máximas centrado con salto de línea
+            document.getElementById('grafico_barras_altitud').insertAdjacentHTML('afterend', '<p style="text-align: center;">' + '$min_max_texto' + '</p>');
         });
     </script>
 HTML;
 }
 generarGraficoAltitudSemanal();
+
 
 
 function generarGraficoHumedadRelativaSemanal() {
@@ -472,6 +500,13 @@ function generarGraficoHumedadRelativaSemanal() {
     // Convertir datos a formato JSON
     $data_json = json_encode($data);
 
+    // Encontrar la humedad mínima y máxima
+    $humedad_minima = min(array_column($humedad_por_dia, 'humedad'));
+    $humedad_maxima = max(array_column($humedad_por_dia, 'humedad'));
+    
+    // Texto indicando las humedades mínimas y máximas con formato centrado y salto de línea
+    $min_max_texto = "Humedad Relativa mínima: $humedad_minima <br> Humedad Relativa máxima: $humedad_maxima";
+
     // Cerrar la conexión
     $conn->close();
 
@@ -492,7 +527,7 @@ function generarGraficoHumedadRelativaSemanal() {
                     type: 'column'
                 },
                 title: {
-                    text: 'Humedad Relativa Media de la Semana'
+                    text: 'Humedad Relativa Media Por Dia De La Semana'
                 },
                 xAxis: {
                     categories: data.map(function(item) {
@@ -512,11 +547,14 @@ function generarGraficoHumedadRelativaSemanal() {
                     data: data
                 }]
             });
+            // Añadir texto de humedades mínimas y máximas centrado con salto de línea
+            document.getElementById('grafico_barras_humedad').insertAdjacentHTML('afterend', '<p style="text-align: center;">' + '$min_max_texto' + '</p>');
         });
     </script>
 HTML;
 }
 generarGraficoHumedadRelativaSemanal();
+
 
 
 
