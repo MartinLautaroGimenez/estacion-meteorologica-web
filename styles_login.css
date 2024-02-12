@@ -7,8 +7,7 @@
 }
 
 body {
-    background-image: url('assets/background-login.png') !important;
-    background-color: #fc7d1c !important;
+    background-image: url(https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/12/Gradient_builder_2.jpg?auto=format&q=60&w=1815&h=1200&fit=crop&crop=faces) !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -20,16 +19,17 @@ body {
 
 .login {
     width: 400px;
-    background-color: #ffffff;
+    background-color: #ffffffab;
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
+    border-radius: 10px;
 }
 
 .login h1 {
     text-align: center;
-    color: #5b6574;
+    color: #2d3137;
     font-size: 24px;
-    padding: 20px 0 20px 0;
+    padding: 0px 0 24px 0;
     border-bottom: 1px solid #dee0e4;
 }
 
@@ -48,6 +48,7 @@ body {
     height: 50px;
     background-color: darkblue;
     color: #ffffff;
+    border-radius: 10px;
 }
 
 .login form input[type="password"],
@@ -56,7 +57,9 @@ body {
     height: 50px;
     border: 1px solid #dee0e4;
     margin-bottom: 20px;
+    margin-left: 10px;
     padding: 0 15px;
+    border-radius: 10px;
 }
 
 .login form input[type="submit"] {
@@ -69,6 +72,7 @@ body {
     font-weight: bold;
     color: #ffffff;
     transition: background-color 0.2s;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .login form input[type="submit"]:hover {
