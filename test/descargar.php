@@ -6,14 +6,14 @@ if (!isset($_SESSION['loggedin'])) {
     header('HTTP/1.1 404 Unauthorized');
     exit;
 }
-if ($_SESSION['name'] != 'martin') {
+if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
     // Configura el código de estado HTTP 403
-    header("HTTP/1.1 404 Unauthorized'");
+    header("HTTP/1.1 403 Unauthorized");
     exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 
-// Ruta al archivo
-$archivo = '/var/www/html/datos.xlsx'; // Actualiza la ruta según tu ubicación
+// Ruta al nuevo archivo
+$archivo = '/home/excel_datos/excel/excel_test.xlsx'; // Nueva ruta del archivo
 
 // Verifica si el archivo existe
 if (!file_exists($archivo)) {
@@ -40,7 +40,7 @@ if (!file_exists($archivo)) {
 
 // Configura los encabezados para la descarga
 header('Content-Type: application/octet-stream');
-header('Content-Disposition: attachment; filename="datos.xlsx"');
+header('Content-Disposition: attachment; filename="excel_test.xlsx"');
 
 // Lee y envía el contenido del archivo
 readfile($archivo);

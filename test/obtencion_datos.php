@@ -1,7 +1,7 @@
 <?php
-if ($_SESSION['name'] != 'martin') {
+if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
     // Configura el código de estado HTTP 403
-    header("HTTP/1.1 404 Unauthorized'");
+    header("HTTP/1.1 403 Unauthorized");
     exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 
@@ -133,8 +133,8 @@ function tabla_Datos() {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    // Consulta para obtener todos los datos de la tabla (sustituye 'nombre_tabla' con el nombre real de tu tabla)
-    $sql = "SELECT * FROM Estacion_test ORDER BY `Dato N°` ASC LIMIT 10"; // Modificado para ordenar por 'Dato N°' de menor a mayor
+    // Consulta para obtener los últimos 10 datos de la tabla en orden descendente (sustituye 'nombre_tabla' con el nombre real de tu tabla)
+    $sql = "SELECT * FROM (SELECT * FROM Estacion_test ORDER BY `Dato N°` DESC LIMIT 10) AS ultimos_datos ORDER BY `Dato N°` ASC";
     $result = $conn->query($sql);
 
     // Verificar si se obtuvieron resultados
@@ -166,4 +166,6 @@ function tabla_Datos() {
     // Cerrar la conexión
     $conn->close();
 }
+
+
 ?>

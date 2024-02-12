@@ -8,7 +8,6 @@
     <title>Inicio De Sesion</title>
     <link rel="stylesheet" href="styles_login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="assets/Hilets estaciones sin fondop.png" type="image/x-icon">
     <script>rel='script.js'</script>
 </head>

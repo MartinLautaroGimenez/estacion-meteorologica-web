@@ -7,9 +7,9 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: ../index.php');
     exit;
 }
-if ($_SESSION['name'] != 'martin') {
+if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
     // Configura el código de estado HTTP 403
-    header("HTTP/1.1 404 Unauthorized'");
+    header("HTTP/1.1 403 Unauthorized");
     exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 ?>
@@ -26,7 +26,7 @@ if ($_SESSION['name'] != 'martin') {
 <body>
 <div class="sidebar">
     <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
+      <img class= 'Imagen_logo' src='../assets/Hilets estaciones sin fondop.png'></img>
       <span class="logo_name">Hilets</span>
     </div>
     <ul class="nav-links">
@@ -61,7 +61,7 @@ if ($_SESSION['name'] != 'martin') {
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="solicitudes.php">
                 <i class='bx bxs-check-circle' ></i>
                 <span class="links_name">Solicitudes</span>
             </a>
@@ -82,7 +82,7 @@ if ($_SESSION['name'] != 'martin') {
         <span class="dashboard">Inicio</span>
       </div>
         <div class="profile-details">
-            <td>Bienvenido <?=  $_SESSION['name'] ?> ☕</td>
+            <td>Bienvenido/a <?=  $_SESSION['name'] ?> ☕</td>
         </div>
     </nav>
 

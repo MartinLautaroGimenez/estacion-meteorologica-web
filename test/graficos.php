@@ -1,7 +1,7 @@
 <?php
-if ($_SESSION['name'] != 'martin') {
+if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
     // Configura el código de estado HTTP 403
-    header("HTTP/1.1 404 Unauthorized'");
+    header("HTTP/1.1 403 Unauthorized");
     exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 

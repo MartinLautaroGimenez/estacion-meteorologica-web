@@ -455,3 +455,8 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+img.Imagen_logo {
+  width: 60px;
+  height: 60px;
+}

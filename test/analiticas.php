@@ -4,9 +4,9 @@ include('obtencion_datos.php');
 include('graficos.php');
 
 // Verifica si el usuario está autenticado
-if ($_SESSION['name'] != 'martin') {
+if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
     // Configura el código de estado HTTP 403
-    header("HTTP/1.1 404 Unauthorized'");
+    header("HTTP/1.1 403 Unauthorized");
     exit(); // Asegura que no se ejecute más código después de mostrar la página de error
 }
 
@@ -26,7 +26,7 @@ if ($_SESSION['name'] != 'martin') {
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <i class='bx bxl-c-plus-plus'></i>
+            <img class= 'Imagen_logo' src='../assets/Hilets estaciones sin fondop.png'></img>
             <span class="logo_name">Hilets</span>
         </div>
         <ul class="nav-links">
