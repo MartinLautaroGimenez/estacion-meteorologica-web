@@ -109,9 +109,10 @@
   font-size: 24px;
   font-weight: 500;
 }
-nav .sidebar-button i{
+nav .sidebar-button i {
   font-size: 35px;
   margin-right: 10px;
+  cursor: pointer;
 }
 .home-section nav .search-box{
   position: relative;

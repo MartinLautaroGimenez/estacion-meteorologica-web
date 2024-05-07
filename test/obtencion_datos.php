@@ -27,7 +27,7 @@ function conectar_base_datos() {
 function obtener_ultimo_dato() {
     $conn = conectar_base_datos();
 
-    $query = "SELECT * FROM Estacion_test ORDER BY fecha DESC LIMIT 1";
+    $query = "SELECT * FROM Estacion_test  ORDER BY `Dato N°` DESC LIMIT 1";
     $result = $conn->query($query);
 
     if ($result === false) {
