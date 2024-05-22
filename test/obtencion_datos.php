@@ -6,10 +6,10 @@ if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
 }
 
 function conectar_base_datos() {
-    $servername = "34.27.15.81:3306";
+    $servername = "44.205.228.12:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
-    $dbname = "db_em";
+    $dbname = "estacion_test";
 
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,7 +27,7 @@ function conectar_base_datos() {
 function obtener_ultimo_dato() {
     $conn = conectar_base_datos();
 
-    $query = "SELECT * FROM Estacion_test  ORDER BY `Dato N°` DESC LIMIT 1";
+    $query = "SELECT * FROM bob ORDER BY `Dato N°` DESC LIMIT 1";
     $result = $conn->query($query);
 
     if ($result === false) {

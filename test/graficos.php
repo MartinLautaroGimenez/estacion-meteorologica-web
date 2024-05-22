@@ -7,10 +7,10 @@ if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
 
 function generarGraficoTemperaturassemanales() {
     // Detalles de la conexión a la base de datos
-    $servername = "34.27.15.81:3306";
+    $servername = "44.205.228.12:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
-    $dbname = "db_em";
+    $dbname = "estacion_test";
     
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -20,7 +20,7 @@ function generarGraficoTemperaturassemanales() {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Temperatura, Fecha FROM Estacion_test ORDER BY Fecha DESC LIMIT 7;";
+    $sql = "SELECT Temperatura, Fecha FROM bob ORDER BY Fecha DESC LIMIT 7;";
     $result = $conn->query($sql);
     
     // Crear un array para almacenar los datos por día de la semana
