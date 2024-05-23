@@ -7,7 +7,7 @@ if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
 
 function generarGraficoTemperaturassemanales() {
     // Detalles de la conexión a la base de datos
-    $servername = "44.205.228.12:3306";
+    $servername = "127.0.0.1:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
     $dbname = "estacion_test";
@@ -144,10 +144,10 @@ generarGraficoTemperaturassemanales();
 
 function generarGraficoPresionAtmosfericaSemanal() {
     // Detalles de la conexión a la base de datos
-    $servername = "34.27.15.81:3306";
+    $servername = "127.0.0.1:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
-    $dbname = "db_em";
+    $dbname = "estacion_test";
     
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -157,7 +157,7 @@ function generarGraficoPresionAtmosfericaSemanal() {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    $sql = "SELECT `Presión Atmosférica`, Fecha FROM Estacion_test ORDER BY Fecha DESC LIMIT 7;";
+    $sql = "SELECT `Presión Atmosférica`, Fecha FROM bob ORDER BY Fecha DESC LIMIT 7;";
     $result = $conn->query($sql);
     
     // Crear un array para almacenar los datos por día de la semana
@@ -281,10 +281,10 @@ generarGraficoPresionAtmosfericaSemanal();
 
 function generarGraficoAltitudSemanal() {
     // Detalles de la conexión a la base de datos
-    $servername = "34.27.15.81:3306";
+    $servername = "127.0.0.1:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
-    $dbname = "db_em";
+    $dbname = "estacion_test";
     
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -294,7 +294,7 @@ function generarGraficoAltitudSemanal() {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Altitud, Fecha FROM Estacion_test ORDER BY Fecha DESC LIMIT 7;";
+    $sql = "SELECT Altitud, Fecha FROM bob ORDER BY Fecha DESC LIMIT 7;";
     $result = $conn->query($sql);
     
     // Crear un array para almacenar los datos por día de la semana
@@ -420,10 +420,10 @@ generarGraficoAltitudSemanal();
 
 function generarGraficoHumedadRelativaSemanal() {
     // Detalles de la conexión a la base de datos
-    $servername = "34.27.15.81:3306";
+    $servername = "127.0.0.1:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
-    $dbname = "db_em";
+    $dbname = "estacion_test";
     
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -433,7 +433,7 @@ function generarGraficoHumedadRelativaSemanal() {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    $sql = "SELECT `Humedad Relativa`, Fecha FROM Estacion_test ORDER BY Fecha DESC LIMIT 7;";
+    $sql = "SELECT `Humedad Relativa`, Fecha FROM bob ORDER BY Fecha DESC LIMIT 7;";
     $result = $conn->query($sql);
     
     // Crear un array para almacenar los datos por día de la semana

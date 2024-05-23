@@ -6,7 +6,7 @@ if ($_SESSION['name'] != 'martin' && $_SESSION['name'] != 'caro') {
 }
 
 function conectar_base_datos() {
-    $servername = "44.205.228.12:3306";
+    $servername = "127.0.0.1:3306";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
     $dbname = "estacion_test";
@@ -120,10 +120,10 @@ function mostrar_humedad_relativa_shortcode() {
 $humedad_relativa_html = mostrar_humedad_relativa_shortcode();
 
 function tabla_Datos() {
-    $servername = "34.27.15.81:3306";
+    $servername = "127.0.0.1";
     $username = "authentication_system";
     $password = "t0ZpZwXx5ICJzL7";
-    $dbname = "db_em";
+    $dbname = "estacion_test";
 
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
